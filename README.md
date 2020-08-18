@@ -3,7 +3,7 @@
 # springboot-dynamic-datasource-sample
 springboot框架集成dynamic-datasource，测试动态数据源、多数据源事务。分布式事务使用中间件seata的at事务模式实现。
 
-![logo](/static/logo.png "logo tip")
+![logo](https://raw.githubusercontent.com/zhigen/specification-document/master/static/logo.png "logo tip")
 
 [![badge](https://img.shields.io/badge/license-WTFPL-blue)](http://www.wtfpl.net/)
 
@@ -31,10 +31,10 @@ springboot框架集成dynamic-datasource，测试动态数据源、多数据源�
 
 <a id="3"></a>
 ## 3. 相关项目
-[specification-document](https://github.com/zhigen/specification-document)
-[springboot-sample](https://github.com/zhigen/springboot-sample)
-[springboot-mybatis-sample](https://github.com/zhigen/springboot-mybatis-sample)
-[springboot-jpa-sample](https://github.com/zhigen/springboot-jpa-sample)
+[specification-document](https://github.com/zhigen/specification-document)<br/>
+[springboot-sample](https://github.com/zhigen/springboot-sample)<br/>
+[springboot-mybatis-sample](https://github.com/zhigen/springboot-mybatis-sample)<br/>
+[springboot-jpa-sample](https://github.com/zhigen/springboot-jpa-sample)<br/>
 
 <a id="4"></a>
 ## 4. 维护者
