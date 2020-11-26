@@ -1,21 +1,18 @@
-package com.zglu.dynamicdatasource.db0.user.dao;
+package com.zglu.dynamicdatasource.db1.relate.dao;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
  * @author zglu
  */
-@DS("zglu0")
+@DS("zglu1")
 @Service
-@AllArgsConstructor
-public class UserDao extends ServiceImpl<UserMapper, User> {
+public class RelateDao extends ServiceImpl<RelateMapper, Relate> {
 
-    public User add(User t) {
+    public void add(Relate t) {
         super.save(t);
-        return t;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.zglu.dynamicdatasource.db0.user.dao;
+package com.zglu.dynamicdatasource.db0.main.dao;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zglu.dynamicdatasource.common.BaseEntity;
@@ -12,9 +12,9 @@ import lombok.experimental.FieldNameConstants;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @FieldNameConstants
-@TableName("user")
-public class User extends BaseEntity {
-    private static final long serialVersionUID = -3865022917945885549L;
+@TableName("main")
+public class Main extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
     private String name;
 

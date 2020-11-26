@@ -1,6 +1,7 @@
 package com.zglu.dynamicdatasource.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.zglu.dynamicdatasource.common.BaseEntity;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -9,6 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 /**
  * @author zglu
@@ -21,25 +23,25 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         // 新增的时候自动填充
         LocalDateTime now = LocalDateTime.now();
-        this.setFieldValByName("createdDate", now, metaObject);
-        this.setFieldValByName("createdBy", getBy(), metaObject);
-        this.setFieldValByName("lastModifiedDate", now, metaObject);
-        this.setFieldValByName("lastModifiedBy", getBy(), metaObject);
-        this.setFieldValByName("deleted", false, metaObject);
+        this.setFieldValByName(BaseEntity.Fields.createdDate, now, metaObject);
+        this.setFieldValByName(BaseEntity.Fields.createdBy, getBy(), metaObject);
+        this.setFieldValByName(BaseEntity.Fields.lastModifiedDate, now, metaObject);
+        this.setFieldValByName(BaseEntity.Fields.lastModifiedBy, getBy(), metaObject);
+        this.setFieldValByName(BaseEntity.Fields.deleted, false, metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         // 更新的时候自动填充
-        this.setFieldValByName("lastModifiedDate", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("lastModifiedBy", getBy(), metaObject);
+        this.setFieldValByName(BaseEntity.Fields.lastModifiedDate, LocalDateTime.now(), metaObject);
+        this.setFieldValByName(BaseEntity.Fields.lastModifiedBy, getBy(), metaObject);
     }
 
-    private long getBy() {
+    private String getBy() {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         Assert.notNull(servletRequestAttributes, "servletRequestAttributes must not be null!");
         HttpServletRequest request = servletRequestAttributes.getRequest();
-        return Long.parseLong(request.getHeader(TOKEN_KEY));
+        return Optional.ofNullable(request.getHeader(TOKEN_KEY)).orElse("admin");
     }
 
 }

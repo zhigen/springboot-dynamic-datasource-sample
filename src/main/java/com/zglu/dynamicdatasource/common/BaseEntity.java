@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @FieldNameConstants
 public class BaseEntity extends Model<BaseEntity> {
-    private static final long serialVersionUID = -1542811750940034006L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -24,13 +24,13 @@ public class BaseEntity extends Model<BaseEntity> {
     private LocalDateTime createdDate;
 
     @TableField(fill = FieldFill.INSERT)
-    private Long createdBy;
+    private String createdBy;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime lastModifiedDate;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long lastModifiedBy;
+    private String lastModifiedBy;
 
     @TableField(fill = FieldFill.INSERT)
     @TableLogic(value = "0", delval = "1")

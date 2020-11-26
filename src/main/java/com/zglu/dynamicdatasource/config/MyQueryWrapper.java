@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
  * @author zglu
  */
 public class MyQueryWrapper<T> extends QueryWrapper<T> {
-    private static final long serialVersionUID = 8483442306735667076L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected String columnToString(String column) {

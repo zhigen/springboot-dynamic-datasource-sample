@@ -1,42 +1,48 @@
-CREATE TABLE `zglu0`.`user`
+DROP TABLE IF EXISTS `zglu0`.`main`;
+CREATE TABLE `zglu0`.`main`
 (
-    `id`                 INT          NOT NULL AUTO_INCREMENT,
-    `name`               VARCHAR(255) NOT NULL COMMENT '名称',
-    `created_date`       datetime     NOT NULL COMMENT '创建时间',
-    `created_by`         INT          NOT NULL COMMENT '创建人',
-    `last_modified_date` datetime     NOT NULL COMMENT '最后更新时间',
-    `last_modified_by`   INT          NOT NULL COMMENT '最后更新人',
-    `deleted`            bit(1)       NOT NULL COMMENT '逻辑删除（1：是，0：否）',
+    `id`                 bigint(20)  NOT NULL AUTO_INCREMENT,
+    `created_date`       datetime    NOT NULL COMMENT '创建时间',
+    `created_by`         varchar(64) NOT NULL COMMENT '创建人',
+    `last_modified_date` datetime    NOT NULL COMMENT '最后更新时间',
+    `last_modified_by`   varchar(64) NOT NULL COMMENT '最后更新人',
+    `deleted`            bit(1)      NOT NULL COMMENT '逻辑删除(1:是, 0:否)',
+    `name`               varchar(64) NOT NULL COMMENT '名称',
     PRIMARY KEY (`id`)
-) ENGINE = INNODB
+) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '用户';
+  COLLATE = utf8mb4_general_ci COMMENT = '主表';
 
-CREATE TABLE `zglu0`.`user_info`
+DROP TABLE IF EXISTS `zglu0`.`expand`;
+CREATE TABLE `zglu0`.`expand`
 (
-    `id`                 INT          NOT NULL AUTO_INCREMENT,
-    `user_id`            INT          NOT NULL COMMENT '用户id',
-    `phone`              VARCHAR(255) NOT NULL COMMENT '手机',
-    `created_date`       datetime     NOT NULL COMMENT '创建时间',
-    `created_by`         INT          NOT NULL COMMENT '创建人',
-    `last_modified_date` datetime     NOT NULL COMMENT '最后更新时间',
-    `last_modified_by`   INT          NOT NULL COMMENT '最后更新人',
-    `deleted`            bit(1)       NOT NULL COMMENT '逻辑删除（1：是，0：否）',
-    PRIMARY KEY (`id`)
-) ENGINE = INNODB
+    `id`                 bigint(20)  NOT NULL AUTO_INCREMENT,
+    `created_date`       datetime    NOT NULL COMMENT '创建时间',
+    `created_by`         varchar(64) NOT NULL COMMENT '创建人',
+    `last_modified_date` datetime    NOT NULL COMMENT '最后更新时间',
+    `last_modified_by`   varchar(64) NOT NULL COMMENT '最后更新人',
+    `deleted`            bit(1)      NOT NULL COMMENT '逻辑删除(1:是, 0:否)',
+    `main_id`            bigint(20)  NOT NULL COMMENT '主表id',
+    `code`               varchar(64) NOT NULL COMMENT '编码',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_code` (`code`)
+) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '用户手机';
+  COLLATE = utf8mb4_general_ci COMMENT = '拓展表';
 
-CREATE TABLE `zglu1`.`goods`
+DROP TABLE IF EXISTS `zglu1`.`relate`;
+CREATE TABLE `zglu1`.`relate`
 (
-    `id`                 INT          NOT NULL AUTO_INCREMENT,
-    `name`               VARCHAR(255) NOT NULL COMMENT '名称',
-    `created_date`       datetime     NOT NULL COMMENT '创建时间',
-    `created_by`         INT          NOT NULL COMMENT '创建人',
-    `last_modified_date` datetime     NOT NULL COMMENT '最后更新时间',
-    `last_modified_by`   INT          NOT NULL COMMENT '最后更新人',
-    `deleted`            bit(1)       NOT NULL COMMENT '逻辑删除（1：是，0：否）',
-    PRIMARY KEY (`id`)
-) ENGINE = INNODB
+    `id`                 bigint(20)  NOT NULL AUTO_INCREMENT,
+    `created_date`       datetime    NOT NULL COMMENT '创建时间',
+    `created_by`         varchar(64) NOT NULL COMMENT '创建人',
+    `last_modified_date` datetime    NOT NULL COMMENT '最后更新时间',
+    `last_modified_by`   varchar(64) NOT NULL COMMENT '最后更新人',
+    `deleted`            bit(1)      NOT NULL COMMENT '逻辑删除(1:是, 0:否)',
+    `main_id`            bigint(20)  NOT NULL COMMENT '主表id',
+    `code`               varchar(64) NOT NULL COMMENT '编码',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_code` (`code`)
+) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '商品';
+  COLLATE = utf8mb4_general_ci COMMENT = '涉及表';

@@ -21,20 +21,19 @@ springboot框架集成dynamic-datasource，测试动态数据源、多数据源�
 
 <a id="2"></a>
 ## 2. 使用
-    2.1. $ docker run --name mysql -d -p 3306:3306 -v /e/data/docker/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:8
+    2.1. $ docker run --name mysql -d -p 3306:3306 -v /e/data/docker/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8
     2.2. 确认2.1挂载目录后执行，开启数据库服务。或修改application.properties配置，指向可用数据库服务
     2.3. 数据库增加zglu0、zglu1库，执行test.sql、db_undo_log.sql
     2.4. $ docker run --name seata -p 8091:8091 -e SEATA_CONFIG_NAME=file:/root/seata-config/registry -v /e/data/docker/seata/conf:/root/seata-config seataio/seata-server:1.3.0
     2.5. 确认2.4挂载目录内已有registry.conf与file.conf配置文件后执行，配置文件可从seata安装包内获取，项目内也有提供文件
-    2.6. 运行项目，打开接口文档(http://localhost:8083/swagger-ui.html)，根据文档测试使用
-    2.7. 修改application.properties配置文件throw-exception=true，测试异常情况下，本地事务及分布式事务回滚结果
+    2.6. 运行项目，http://localhost:8081?name=test&code=test，测试本地事务（利用code字段唯一索引产生错误）
+    2.7. http://localhost:8081/global?name=test&code=test，测试分布式事务（利用code字段唯一索引产生错误）
 
 <a id="3"></a>
 ## 3. 相关项目
 [specification-document](https://github.com/zhigen/specification-document)<br/>
 [springboot-sample](https://github.com/zhigen/springboot-sample)<br/>
-[springboot-mybatis-sample](https://github.com/zhigen/springboot-mybatis-sample)<br/>
-[springboot-jpa-sample](https://github.com/zhigen/springboot-jpa-sample)<br/>
+[springboot-web-sample](https://github.com/zhigen/springboot-web-sample)<br/>
 
 <a id="4"></a>
 ## 4. 维护者

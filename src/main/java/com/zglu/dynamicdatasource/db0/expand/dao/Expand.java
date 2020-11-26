@@ -1,4 +1,4 @@
-package com.zglu.dynamicdatasource.db0.userinfo.dao;
+package com.zglu.dynamicdatasource.db0.expand.dao;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zglu.dynamicdatasource.common.BaseEntity;
@@ -12,11 +12,11 @@ import lombok.experimental.FieldNameConstants;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @FieldNameConstants
-@TableName("user_info")
-public class UserInfo extends BaseEntity {
-    private static final long serialVersionUID = 1593470001497184768L;
+@TableName("expand")
+public class Expand extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-    private Long userId;
-    private String phone;
+    private Long mainId;
+    private String code;
 
 }
